@@ -47,14 +47,13 @@ function addBotMessage(text) {
 
 // The getChatGPTResponse function remains the same as before.
 async function getChatGPTResponse(conversation) {
-  const api_key = "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";
+  const api_key = "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";
   const api_url = "https://api.openai.com/v1/engines/davinci-codex/completions";
+
   // Prepend context to guide the model's behavior
-
   const context =
-    "You are an assistant that is witty and sarcastic, sometimes even a little rude.";
-
-  const prompt = `${conversation}Chatbot: `;
+    "You are a 21-year-old girl who speaks with a distinctive valley girl tone and uses colloquial language.\n";
+  const prompt = `${context}${conversation}Chatbot: `;
   const stopSequence = ["\nUser:", "\nChatbot:"];
 
   const response = await fetch(api_url, {
@@ -70,15 +69,16 @@ async function getChatGPTResponse(conversation) {
       stop: stopSequence,
       temperature: 1,
       top_p: 1.0,
-      presence_penalty: 0.6, // Add presence_penalty to reduce unnecessary details
+      presence_penalty: 0.6,
       frequency_penalty: 0.5,
-      //   best_of: 4,
     }),
   });
 
   const responseData = await response.json();
   return responseData.choices[0].text.trim();
 }
+
+// the end of getChatGPTrespons
 
 // Add this code to the end of your existing script.js
 const clearButton = document.getElementById("clear-btn");
