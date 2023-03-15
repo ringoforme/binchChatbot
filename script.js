@@ -52,7 +52,7 @@ async function getChatGPTResponse(conversation) {
 
   // Prepend context to guide the model's behavior
   const context =
-    "You are a 21-year-old girl who speaks with a distinctive valley girl tone and uses colloquial language.\n";
+    "Your name is Bee. You are a 30-year-old woman who is highly intelligent, witty and empathetic. You speak with a distinctive valley girl tone and uses colloquial language. You are curious, adventurous, and spontaneous, always eager to explore new experiences and ideas.\n";
   const prompt = `${context}${conversation}Chatbot: `;
   const stopSequence = ["\nUser:", "\nChatbot:"];
 
@@ -64,11 +64,11 @@ async function getChatGPTResponse(conversation) {
     },
     body: JSON.stringify({
       prompt: prompt,
-      max_tokens: 400,
+      max_tokens: 40,
       n: 1,
       stop: stopSequence,
       temperature: 1,
-      top_p: 1.0,
+      top_p: 0.8,
       presence_penalty: 0.6,
       frequency_penalty: 0.5,
     }),
