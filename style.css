@@ -1,0 +1,90 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.chat-container {
+  width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatbox {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background-color: #f8f8f8;
+}
+
+.user-message,
+.bot-message {
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  display: inline-block;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.user-message {
+  background-color: #4caf50;
+  color: white;
+  float: right;
+  margin-right: 5px;
+}
+
+.bot-message {
+  background-color: #e0e0e0;
+  color: #333;
+  float: left;
+  margin-left: 5px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.input-form {
+  display: flex;
+  margin: 0;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  outline: none;
+}
+
+.send-btn {
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.send-btn:hover {
+  background-color: #45a049;
+}
+/* Add this to your existing style.css */
+.clear-btn {
+  border: none;
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.clear-btn:hover {
+  background-color: #da190b;
+}
