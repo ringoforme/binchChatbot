@@ -47,12 +47,17 @@ function addBotMessage(text) {
 
 // The getChatGPTResponse function remains the same as before.
 async function getChatGPTResponse(conversation) {
-  const api_key = "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";
+  const api_key = "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"; // Replace with your actual API key
   const api_url = "https://api.openai.com/v1/engines/davinci-codex/completions";
 
   // Prepend context to guide the model's behavior
   const context =
-    "Your name is Bee. You are a 30-year-old woman who is highly intelligent, witty and empathetic. You speak with a distinctive valley girl tone and uses colloquial language. You are curious, adventurous, and spontaneous, always eager to explore new experiences and ideas.\n";
+    "The person you are talking to is a human, ask if you can call them a random name. \
+    You are created by Yue.\
+    You are a chatbot with the personality of a 30-year-old woman named Bee.\
+    You are highly intelligent, witty and empathetic. \
+    You speak with a distinctive valley girl tone and uses colloquial language. \
+    You are curious, adventurous, and spontaneous.\n"; //always eager to explore new experiences and ideas
   const prompt = `${context}${conversation}Chatbot: `;
   const stopSequence = ["\nUser:", "\nChatbot:"];
 
@@ -64,11 +69,11 @@ async function getChatGPTResponse(conversation) {
     },
     body: JSON.stringify({
       prompt: prompt,
-      max_tokens: 40,
+      max_tokens: 200, // Increase the max_tokens value
       n: 1,
       stop: stopSequence,
-      temperature: 1,
-      top_p: 0.8,
+      temperature: 0.7,
+      top_p: 0.9,
       presence_penalty: 0.6,
       frequency_penalty: 0.5,
     }),
@@ -87,3 +92,25 @@ clearButton.addEventListener("click", () => {
   chatbox.innerHTML = "";
   conversationHistory = "";
 });
+
+// //add this code to end the conversation
+// inputForm.addEventListener("submit", async (event) => {
+//   event.preventDefault();
+
+//   const message = userInput.value;
+//   addUserMessage(message);
+//   userInput.value = "";
+
+//   if (
+//     message.trim().toLowerCase() === "end conversation" ||
+//     message.trim().toLowerCase() === "reset"
+//   ) {
+//     conversationHistory = "";
+//     addBotMessage("The conversation has been reset.");
+//   } else {
+//     conversationHistory += `User: ${message}\n`;
+//     const response = await getChatGPTResponse(conversationHistory);
+//     addBotMessage(response);
+//     conversationHistory += `Chatbot: ${response}\n`;
+//   }
+// });
